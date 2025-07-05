@@ -11,6 +11,9 @@ func main() {
 	router := http.NewServeMux()
 
 	router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) { http.ServeFile(w, r, "index.html") })
+	router.HandleFunc("/new-game", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "new_game.html")
+	})
 
 	server := &http.Server{
 		Addr:    ":8080",
