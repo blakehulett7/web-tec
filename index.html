@@ -10,8 +10,8 @@
 
 <body>
     <h1>Welcome to Web-tec</h1>
-    <button hx-post="/sign-up" hx-target="body">Sign Up</button>
-    <button hx-swap>Sign In</button>
+    <button hx-push-url=true hx-get="/sign-up" hx-target="body">Sign Up</button>
+    <button hx-get>Sign In</button>
 </body>
 
 </html>
