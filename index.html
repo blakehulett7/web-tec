@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -10,8 +9,10 @@
 
 <body>
     <h1>Welcome to Web-tec</h1>
-    <button hx-push-url=true hx-get="/sign-up" hx-target="body">Sign Up</button>
-    <button hx-get>Sign In</button>
-</body>
 
-</html>
+    <!-- Generate a new hash, then load up the Instance -->
+    <button hx-push-url=true hx-get="/sign-up" hx-target="body">New Instance</button>
+
+    <!-- Load the hash -->
+    <button hx-get>Load Instance</button>
+</body>
