@@ -11,8 +11,7 @@ func main() {
 	router := http.NewServeMux()
 
 	router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) { http.ServeFile(w, r, "index.html") })
-	router.HandleFunc("/sign-up", func(w http.ResponseWriter, r *http.Request) { http.ServeFile(w, r, "sign_up.html") })
-	router.HandleFunc("/new-instance", func(w http.ResponseWriter, r *http.Request) { http.ServeFile(w, r, "new_instance.html") })
+	router.HandleFunc("/new-instance", new_instance_handler)
 
 	server := &http.Server{
 		Addr:    ":8080",
