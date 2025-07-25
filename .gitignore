@@ -29,6 +29,8 @@ go.work.sum
 
 tmp
 
+app.db
+
 # Editor/IDE
 # .idea/
 # .vscode/
