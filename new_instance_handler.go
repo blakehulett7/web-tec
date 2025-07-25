@@ -7,9 +7,10 @@ import (
 	"github.com/google/uuid"
 )
 
-func new_instance_handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("In Nomine Patris...")
-
+func (b Bridge) new_instance_handler(w http.ResponseWriter, r *http.Request) {
 	id := uuid.New()
-	state := init_state(id)
+	state := NewState(id)
+
+	redirect_url := fmt.Sprintf("/%v", id)
+	http.Redirect(w, r, redirect_url, http.StatusSeeOther)
 }
