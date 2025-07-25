@@ -16,6 +16,8 @@ func main() {
 		panic("failed to connect to database")
 	}
 
+	db.AutoMigrate(&State{})
+
 	b := Bridge{
 		Db: db,
 	}
@@ -23,8 +25,8 @@ func main() {
 	router := http.NewServeMux()
 
 	router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) { http.ServeFile(w, r, "index.html") })
-	router.HandleFunc("/new-instance", b.new_instance_handler)
-	router.HandleFunc("/{id}", func(w http.ResponseWriter, r *http.Request) { fmt.Println("Made it") })
+	router.HandleFunc("/new-instance", b.NewInstanceHandler)
+	router.HandleFunc("/{id}", b.LoadInstanceHandler)
 
 	server := &http.Server{
 		Addr:    ":8080",

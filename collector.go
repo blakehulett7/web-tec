@@ -1,6 +1,10 @@
 package main
 
+import "github.com/google/uuid"
+
 type Collector struct {
+	UserId uuid.UUID
+
 	Name string
 	Item string
 
@@ -8,7 +12,7 @@ type Collector struct {
 	IsFueled    bool
 	TickCounter int
 
-	MaterialCost map[string]int
+	MaterialCost Items `gorm:"embedded"`
 
 	EnergyPerBatch int
 	ItemsPerBatch  int
