@@ -12,7 +12,7 @@ type Collector struct {
 	IsFueled    bool
 	TickCounter int
 
-	MaterialCost Items `gorm:"embedded"`
+	MaterialCost IMat `gorm:"embedded"`
 
 	EnergyPerBatch int
 	ItemsPerBatch  int

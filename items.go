@@ -1,12 +1,9 @@
 package main
 
-type Items struct {
-	W   int
-	Stn int
+import "github.com/google/uuid"
 
-	Irn int
-	C   int
-	Cpr int
-	Tn  int
-	Nkl int
+type IMat struct {
+	UserId uuid.UUID
+	Name   string
+	Count  int
 }

@@ -1,55 +1,21 @@
 <body>
-    <table>
-        <tr>
-            <th>Hash</th>
-            <th>E</th>
-        </tr>
-        <tr>
-            <td>{{ .Id }}</td>
-            <td>{{ .E }}</td>
-        </tr>
-    </table>
-    <table>
-        <tr>
-            <th>Raw</th>
-            <th>Metadata</th>
-        </tr>
-        <tr>
-            <td>
-                <table>
-                    <tr>
-                        <th>Wd</th>
-                        <th>Stn</th>
-                    </tr>
-                    <tr>
-                        <td id="raw-wd">
-                            <input name="Wd" value="{{ .IMap.W }}" readonly />
-                        </td>
-                        <td>{{ .IMap.Stn }}</td>
-                    </tr>
-                </table>
-            </td>
-            <td>
-                <table>
-                    <tr>
-                        <th>Irn</th>
-                        <th>C</th>
-                        <th>Cpr</th>
-                        <th>Tn</th>
-                        <th>Nkl</th>
-                    </tr>
-                    <tr>
-                        <td>{{ .IMap.Irn }}</td>
-                        <td>{{ .IMap.C }}</td>
-                        <td>{{ .IMap.Cpr }}</td>
-                        <td>{{ .IMap.Tn }}</td>
-                        <td>{{ .IMap.Nkl }}</td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
+    <header>
+        <table>
+            <tr>
+                <th>Hash</th>
+                <th>E</th>
+            </tr>
+            <tr>
+                <td>{{ .Id }}</td>
+                <td>{{ .E }}</td>
+            </tr>
+        </table>
+    </header>
 
-    <Button hx-post="/manual" hx-target="#raw-wd">W-Manual</Button>
-    <Button>Stn-Manual</Button>
+    <main>
+        {{ range .IData }}
+        <input name="{{ .Name }}" value="{{ .Count }}" readonly />
+        {{ end }}
+    </main>
+
 </body>
