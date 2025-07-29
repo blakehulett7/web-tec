@@ -28,9 +28,12 @@ func main() {
 	fs := http.FileServer(http.Dir("."))
 
 	router.Handle("/", fs)
+
 	router.HandleFunc("/new-instance", b.NewInstanceHandler)
 	router.HandleFunc("/load-instance", b.LoadInstanceHandler)
 	router.HandleFunc("/instance/{id}", b.StartInstanceHandler)
+
+	router.HandleFunc("POST /instance/{id}/manual", b.ManualIMatHander)
 
 	server := &http.Server{
 		Addr:    ":8080",

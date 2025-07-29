@@ -14,11 +14,11 @@
 
     <main style="display: flex; flex-flow: column">
         {{ range .IData }}
-        <section>
+        <form>
             <label for="{{ .Name }}">{{ .Name }}</label>
             <input id="{{ .Name }}" name="{{ .Name }}" value="{{ .Count }}" readonly />
-            <Button hx-post="/manual" hx-target="#{{ .Name }}" hx-swap="outerHTML">Add</Button>
-        </section>
+            <Button hx-swap="outerHTML" hx-target="#{{ .Name }}" hx-post="/instance/{{ $.Id }}/manual">Add</Button>
+        </form>
         {{ end }}
     </main>
 
