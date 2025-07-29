@@ -13,6 +13,6 @@ func (b Bridge) NewInstanceHandler(w http.ResponseWriter, r *http.Request) {
 
 	b.Db.Create(&state)
 
-	redirect_url := fmt.Sprintf("/%v", id)
+	redirect_url := fmt.Sprintf("/instance/%v", id)
 	http.Redirect(w, r, redirect_url, http.StatusSeeOther)
 }

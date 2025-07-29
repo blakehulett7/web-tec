@@ -1,12 +1,12 @@
 package main
 
 type Items struct {
-	Wood  int
-	Stone int
+	W   int
+	Stn int
 
-	Iron   int
-	Coal   int
-	Copper int
-	Tin    int
-	Nickel int
+	Irn int
+	C   int
+	Cpr int
+	Tn  int
+	Nkl int
 }

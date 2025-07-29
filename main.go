@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	fmt.Println("Jesus is Lord!")
+	fmt.Println("Dominus Iesus Christus")
 
 	db, err := gorm.Open(sqlite.Open("app.db"))
 	if err != nil {
@@ -24,9 +24,12 @@ func main() {
 
 	router := http.NewServeMux()
 
-	router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) { http.ServeFile(w, r, "index.html") })
+	fs := http.FileServer(http.Dir("."))
+
+	router.Handle("/", fs)
 	router.HandleFunc("/new-instance", b.NewInstanceHandler)
-	router.HandleFunc("/{id}", b.LoadInstanceHandler)
+	router.HandleFunc("/load-instance", b.LoadInstanceHandler)
+	router.HandleFunc("/instance/{id}", b.StartInstanceHandler)
 
 	server := &http.Server{
 		Addr:    ":8080",
