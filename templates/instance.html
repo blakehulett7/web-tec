@@ -12,9 +12,13 @@
         </table>
     </header>
 
-    <main>
+    <main style="display: flex; flex-flow: column">
         {{ range .IData }}
-        <input name="{{ .Name }}" value="{{ .Count }}" readonly />
+        <section>
+            <label for="{{ .Name }}">{{ .Name }}</label>
+            <input id="{{ .Name }}" name="{{ .Name }}" value="{{ .Count }}" readonly />
+            <Button hx-post="/manual" hx-target="#{{ .Name }}" hx-swap="outerHTML">Add</Button>
+        </section>
         {{ end }}
     </main>
 
