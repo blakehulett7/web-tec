@@ -11,12 +11,10 @@
 <body>
     <h1>Middleware Testing</h1>
 
-    <!-- Generate a new hash, then load up the Instance -->
     <button hx-push-url=true hx-get="/new-instance" hx-target="body">New Instance</button>
 
     <hr>
 
-    <!-- Load the hash -->
     <form>
         <button hx-target="body" hx-post="/load-instance">Load Instance</button>
         <input type="text" name="hash" />
