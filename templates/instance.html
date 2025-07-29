@@ -22,7 +22,9 @@
                         <th>Stn</th>
                     </tr>
                     <tr>
-                        <td>{{ .IMap.W }}</td>
+                        <td id="raw-wd">
+                            <input name="Wd" value="{{ .IMap.W }}" readonly />
+                        </td>
                         <td>{{ .IMap.Stn }}</td>
                     </tr>
                 </table>
@@ -47,4 +49,7 @@
             </td>
         </tr>
     </table>
+
+    <Button hx-post="/manual" hx-target="#raw-wd">W-Manual</Button>
+    <Button>Stn-Manual</Button>
 </body>
