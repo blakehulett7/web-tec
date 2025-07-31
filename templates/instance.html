@@ -21,13 +21,18 @@
     </header>
 
     <main style="display: flex; flex-flow: column">
+        <br>
         {{ range .IData }}
         <form>
             <label for="{{ .Name }}">{{ .Name }}</label>
             <input id="{{ .Name }}" name="{{ .Name }}" value="{{ .Count }}" readonly />
-            <Button hx-swap="outerHTML" hx-target="#{{ .Name }}" hx-post="/instance/{{ $.Id }}/manual">Add</Button>
+            <Button hx-swap="outerHTML" hx-target="#{{ .Name }}" hx-post="/instance/{{ $.Id }}/manual">+</Button>
         </form>
         {{ end }}
+        <br>
+        <div>
+            <button>Constructor</button>
+        </div>
     </main>
 
 </body>
