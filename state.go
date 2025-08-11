@@ -12,11 +12,11 @@ type State struct {
 }
 
 type FuelEvent struct {
-	StateId  uuid.UUID
-	EntityId uuid.UUID
-	Cost     ISet `gorm:"serializer:json"`
-	Duration int
-	EperT    int
+	StateId        uuid.UUID
+	EntityId       uuid.UUID
+	Cost           ISet `gorm:"serializer:json"`
+	TicksRemaining int
+	EperTick       int
 }
 
 type MutationEvent struct {
