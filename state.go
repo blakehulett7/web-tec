@@ -5,21 +5,23 @@ import "github.com/google/uuid"
 type State struct {
 	Id    uuid.UUID
 	E     int
-	IData ISet
+	IData ISet `gorm:"serializer:json"`
 
-	FuelSystem      []FuelEvent
-	IMutationSystem []MutationEvent
+	FuelSystem     []FuelEvent
+	MutationSystem []MutationEvent
 }
 
 type FuelEvent struct {
-	Id       uuid.UUID
-	Cost     ISet
+	StateId  uuid.UUID
+	EntityId uuid.UUID
+	Cost     ISet `gorm:"serializer:json"`
 	Duration int
 	EperT    int
 }
 
 type MutationEvent struct {
-	Id     uuid.UUID
-	Remove ISet
-	Add    ISet
+	StateId  uuid.UUID
+	EntityId uuid.UUID
+	Remove   ISet `gorm:"serializer:json"`
+	Add      ISet `gorm:"serializer:json"`
 }

@@ -16,7 +16,6 @@ func main() {
 		panic("failed to connect to database")
 	}
 
-	db.AutoMigrate(&IMat{})
 	db.AutoMigrate(&State{})
 
 	b := Bridge{
