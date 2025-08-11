@@ -8,7 +8,7 @@ import (
 
 func (b Bridge) StartInstanceHandler(w http.ResponseWriter, r *http.Request) {
 	var app State
-	result := b.Db.Preload("IData").First(&app, "id = ?", r.PathValue("id"))
+	result := b.Db.First(&app, "id = ?", r.PathValue("id"))
 	if result.Error != nil {
 		fmt.Println("save not found, handle this...")
 		http.NotFound(w, r)
