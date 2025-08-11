@@ -3,10 +3,11 @@ package main
 import "github.com/google/uuid"
 
 type State struct {
-	Id         uuid.UUID
-	E          int
-	IData      []IMat      `gorm:"foreignKey:UserId"`
-	Collectors []Collector `gorm:"foreignKey:UserId"`
+	Id              uuid.UUID
+	E               int
+	IData           []IMat `gorm:"foreignKey:UserId"`
+	FuelSystem      []FuelEvent
+	IMutationSystem []MutationEvent
 }
 
 func NewState() State {
@@ -22,13 +23,21 @@ func NewState() State {
 	}
 
 	return State{
-		Id:         id,
-		E:          0,
-		IData:      IList,
-		Collectors: []Collector{},
+		Id:    id,
+		E:     0,
+		IData: IList,
 	}
 }
 
-type FuelingSystem struct {
-	Cost map[string]int
+type FuelEvent struct {
+	Id       uuid.UUID
+	Cost     ISet
+	Duration int
+	EperT    int
+}
+
+type MutationEvent struct {
+	Id     uuid.UUID
+	Remove ISet
+	Add    ISet
 }
