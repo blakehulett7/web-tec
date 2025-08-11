@@ -28,3 +28,7 @@ func NewState() State {
 		Collectors: []Collector{},
 	}
 }
+
+type FuelingSystem struct {
+	Cost map[string]int
+}
