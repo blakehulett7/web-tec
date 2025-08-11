@@ -3,10 +3,12 @@ package main
 import (
 	"fmt"
 	"net/http"
+
+	"github.com/google/uuid"
 )
 
 func (b Bridge) NewInstanceHandler(w http.ResponseWriter, r *http.Request) {
-	state := NewState()
+	state := State{Id: uuid.New()}
 	b.Db.Create(&state)
 
 	redirect_url := fmt.Sprintf("/instance/%v", state.Id)
