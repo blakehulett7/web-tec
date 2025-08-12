@@ -30,5 +30,5 @@ func NewCBurner(app *State) {
 		TicksRemaining: 10,
 		EperTick:       1,
 	}
-	app.FuelSystem = append(app.FuelSystem)
+	app.FuelSystem = append(app.FuelSystem, fuel_event)
 }
