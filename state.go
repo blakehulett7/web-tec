@@ -21,10 +21,11 @@ type FuelEvent struct {
 }
 
 type MutationEvent struct {
-	StateId  uuid.UUID
-	EntityId uuid.UUID
-	Remove   ISet `gorm:"serializer:json"`
-	Add      ISet `gorm:"serializer:json"`
+	StateId      uuid.UUID
+	EntityId     uuid.UUID
+	ECostperTick int
+	Remove       ISet `gorm:"serializer:json"`
+	Add          ISet `gorm:"serializer:json"`
 }
 
 func (app *State) Tick() {

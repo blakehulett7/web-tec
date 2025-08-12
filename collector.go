@@ -2,19 +2,33 @@ package main
 
 import "github.com/google/uuid"
 
-type Collector struct {
-	UserId uuid.UUID
+func NewCM(app *State) {
+	entity_id := uuid.New()
+	add_set := ISet{}
+	add_set[C] = 1
 
-	Name string
-	Item string
+	mutation_event := MutationEvent{
+		StateId:      app.Id,
+		EntityId:     entity_id,
+		ECostperTick: 1,
+		Add:          add_set,
+	}
 
-	IsOn        bool
-	IsFueled    bool
-	TickCounter int
+	app.MutationSystem = append(app.MutationSystem, mutation_event)
+}
 
-	MaterialCost IMat `gorm:"embedded"`
+func NewCBurner(app *State) {
+	entity_id := uuid.New()
+	cost := ISet{}
+	cost[C] = 1
 
-	EnergyPerBatch int
-	ItemsPerBatch  int
-	TicksPerBatch  int
+	fuel_event := FuelEvent{
+		StateId:        app.Id,
+		EntityId:       entity_id,
+		IsFueled:       false,
+		Cost:           cost,
+		TicksRemaining: 10,
+		EperTick:       1,
+	}
+	app.FuelSystem = append(app.FuelSystem)
 }
